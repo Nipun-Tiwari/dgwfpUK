@@ -17,8 +17,8 @@ results through a FastAPI backend and a React/Recharts frontend.
 
 | Service | URL |
 |---|---|
-| Backend API | *(set after Render deploy — update this line)* |
-| Frontend dashboard | *(set after Render deploy — update this line)* |
+| Backend API | https://wind-accuracy-backend.onrender.com/health|
+| Frontend dashboard |https://wind-accuracy-frontend.onrender.com|
 
 ---
 
