@@ -1,0 +1,22 @@
+{
+  "description": "4 complete hours hand-computed. errors=[-970,-800,-1000,-500], MAE=817.5, RMSE=sqrt(707725)=841.264157, bias=-817.5, mean_actual=13600",
+  "hours": [
+    {"deliveryHour": "2026-01-01T00:00:00Z", "forecast_mw": 14230.0, "actual_mw": 15200.0, "complete": true},
+    {"deliveryHour": "2026-01-01T01:00:00Z", "forecast_mw": 13900.0, "actual_mw": 14700.0, "complete": true},
+    {"deliveryHour": "2026-01-01T02:00:00Z", "forecast_mw": 12000.0, "actual_mw": 13000.0, "complete": true},
+    {"deliveryHour": "2026-01-01T03:00:00Z", "forecast_mw": 11000.0, "actual_mw": 11500.0, "complete": true},
+    {"deliveryHour": "2026-01-01T04:00:00Z", "forecast_mw": null, "actual_mw": null, "complete": false}
+  ],
+  "expected": {
+    "mae": 817.5,
+    "rmse": 841.2639300481152,
+    "bias": -817.5,
+    "mean_actual": 13600.0,
+    "nmae": 6.011029411764706,
+    "nrmse": 6.185764191530259,
+    "hoursTotal": 5,
+    "hoursComplete": 4,
+    "hoursIncomplete": 1,
+    "completeness": 0.8
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "data": [
+    {"dataset": "WINDFOR", "publishTime": "2025-12-31T07:30:00Z", "startTime": "2026-01-01T00:00:00Z", "generation": 14230},
+    {"dataset": "WINDFOR", "publishTime": "2025-12-31T07:30:00Z", "startTime": "2026-01-01T01:00:00Z", "generation": 13900},
+    {"dataset": "WINDFOR", "publishTime": "2025-12-31T09:30:00Z", "startTime": "2026-01-01T00:00:00Z", "generation": 14500},
+    {"dataset": "WINDFOR", "publishTime": "2025-12-31T04:30:00Z", "startTime": "2026-01-01T00:00:00Z", "generation": 13800}
+  ]
+}

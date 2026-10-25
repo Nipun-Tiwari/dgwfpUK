@@ -1,0 +1,48 @@
+# render.yaml — Render deployment blueprint
+#
+# This file defines the two Render services that make up the Wind Accuracy Dashboard.
+# Push this file to your GitHub repo and import it in the Render dashboard
+# (New → Blueprint) to provision both services automatically.
+#
+# BEFORE FIRST DEPLOY:
+#   1. Ensure backend/data/wind_data.db is committed to the repo (or added as Git LFS).
+#   2. After both services are created, copy the Render static site URL and set it
+#      as FRONTEND_ORIGIN on the backend service (see below).
+
+services:
+  # ── Backend Web Service ────────────────────────────────────────────────────
+  - type: web
+    name: wind-accuracy-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free          # Upgrade to "starter" if cold-start latency is unacceptable for demo
+    healthCheckPath: /health
+    envVars:
+      - key: WIND_DB_PATH
+        value: /app/backend/data/wind_data.db
+      - key: DECISION_CUTOFF_TIME
+        value: "09:20"
+      # FRONTEND_ORIGIN must be set to the exact static site origin AFTER first deploy.
+      # Example: https://wind-accuracy-frontend.onrender.com
+      # Update this value via the Render dashboard or re-deploy after setting it.
+      - key: FRONTEND_ORIGIN
+        value: https://wind-accuracy-frontend.onrender.com   # ← replace with actual URL
+
+  # ── Frontend Static Site ───────────────────────────────────────────────────
+  - type: web
+    name: wind-accuracy-frontend
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    rootDir: frontend
+    # Rewrite all paths to index.html for React Router / SPA
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # VITE_BACKEND_URL is baked into the Vite output at build time.
+      # Set to the Render web service URL — e.g. https://wind-accuracy-backend.onrender.com
+      - key: VITE_BACKEND_URL
+        value: https://wind-accuracy-backend.onrender.com   # ← replace with actual URL
